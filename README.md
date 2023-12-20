@@ -32,7 +32,7 @@ Readit is a content management website that allows users to read, write, and man
 ### Setup
 - Clone the repository:
   ```bash
-  git clone https://github.com/your-username/readit.git
+  git clone https://github.com/Mafumu12/content-management-site.git
 
   
 - Change into the project directory:
