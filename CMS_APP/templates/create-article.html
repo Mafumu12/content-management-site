@@ -1,0 +1,21 @@
+{% extends 'base.html '%} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/create.css'%}" />
+</head>
+<div class="form-container">
+  <h1 class="form-head">Tell Your <span>Story.</span></h1>
+
+  <form method="post" action="{% url 'post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <p>{{ form.media }}</p>
+    {{form.as_p}}
+
+    <div class="click">
+      <button class="publish" type="submit">Publish</button>
+      <a href="{% url 'home' %}" class="cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

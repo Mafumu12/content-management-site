@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upadate Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile-update.css' %}" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="update-container">
+      <h1>Update Profile</h1>
+      <form method="post" action=" " enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.username }}</p>
+        <p>{{ form.profession }}</p>
+        <p>{{ form.about }}</p>
+        <p>{{ form.picture }}</p>
+
+        <br />
+
+        <button class="update-btn" type="submit">Update Profile</button>
+        <button class="update-btn" type="submit">Cancel</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+{% extends 'base.html'%} {% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/page.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+</head>
+
+{% block content %}
+<div class="flex-container">
+  <div class="main-container">
+    {% for post in posts %}
+
+    <div class="sub-container">
+      <div>
+        {% if post.author.profile_id %}<a
+          class="profile-link"
+          href="{% url 'profile' post.author.profile_id %}"
+        >
+          <header class="article-header">
+            <img
+              class="profile-picture"
+              src="{{ post.author.picture.url }}"
+              alt=""
+            />
+
+            <div>
+              <p class="user">{{post.author.name}}</p>
+            </div>
+          </header> </a
+        >{% else %}
+
+        <p>Authors profile is not available</p>
+        {% endif %}
+
+        <a class="article-block" href="{% url 'detail' post.slug %}">
+          <p class="title">{{post.title}}</p>
+          <p class="article">{{post.body|safe|truncatechars:200}}</p>
+          <p class="date">
+            {{post.created}}.<button class="article-btn">{{post.tag}}</button>
+          </p>
+        </a>
+      </div>
+
+      <div class="sub-container-2">
+        <a class="art-pho" href="{% url 'detail' post.slug %}">
+          <img class="article-photo" src="{{post.image.url}}" alt="" />
+        </a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  <br />
+  <div class="category">
+    <p class="cat-heading">Find what interests you</p>
+    <div class="sub-container-3">
+      {% for category in Categories %}
+      <a href="{% url 'home' category.id %}">
+        <button class="category-btn">{{category.name}}</button>
+      </a>
+
+      {% endfor %}
+      <br />
+    </div>
+  </div>
+  <div style="text-align: center; margin-bottom: 35px;" class="pagination">
+    
+        {% if posts.has_previous %}
+        <a style="text-decoration: none; font-family: Inter; color: #16044F; font-size: 18px; font-weight: 500;"  class="page-nav" href="?page=1">first page</a>
+        <a style="text-decoration: none; margin-left: 15px; font-family: Inter; color: #16044F; font-size: 18px; font-weight: 500;" class="page-number" href="?page={{ posts.previous_page_number }}"> previous page</a>
+         
+        {% endif %}
+
+        <span style="font-family: Inter;  color: #FAFAFA; font-size: 20px; font-weight: 600; background-color:#16044F;;height: 25px;width: 25px; margin: 15px;" class="current-page">{{ posts.number }}</span>
+
+        {% if posts.has_next %}
+         
+        <a style="text-decoration: none; font-family: Inter; color: #16044F; font-size: 18px; font-weight: 500;" class="page-number" href="?page={{ posts.next_page_number }}">next page </a>
+        <a style="text-decoration: none; margin: 15px;  font-family: Inter; color: #16044F; font-size: 18px; font-weight: 500;" class="page-nav" href="?page={{ posts.paginator.num_pages }}">last Page  </a>
+        {% endif %}
+    
+</div>
+</div>
+</div>
+
+{% endblock %}

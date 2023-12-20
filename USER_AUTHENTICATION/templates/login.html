@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static  'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/auth.css' %}" />
+  </head>
+  <body>
+    <div class="nav-container">
+      <p class="logo">READ<span>it</span></p>
+
+      <nav>
+        <ul class="nav-items-1">
+          <li>
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <div class="nav-button">
+            <a href="{% url 'signup' %}">
+              <button>Get <span>Started</span></button></a
+            >
+          </div>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="login-container">
+      <h1 class="he">Get <span>Started.</span></h1>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <p>
+          <input
+            class="text-box"
+            type="username"
+            name="username"
+            placeholder="username"
+            required
+          />
+        </p>
+        <br />
+        <p>
+          <input
+            class="text-box"
+            type="password"
+            name="password"
+            placeholder="password"
+            required
+          />
+        </p>
+        <br />
+        <p class="login-text">
+          Don't have account? Click
+          <a class="here" href="{% url 'signup' %}">here</a> to signup
+        </p>
+        <br />
+        <button class="login-btn" type="submit">login</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html '%} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/create.css'%}" />
+</head>
+<div class="form-container">
+  <h1 class="form-head">Tell Your <span>Story.</span></h1>
+  <form method="post" action=" " enctype="multipart/form-data">
+    {% csrf_token %} {{form.media}} {{form.as_p}}
+
+    <button class="pub" type="submit">Cancel</button>
+    <button class="publish" type="submit">Update</button>
+  </form>
+  <a href="{% url 'delete' post.slug %}">
+    <button class="cancel">Delete</button></a
+  >
+</div>
+{% endblock %}

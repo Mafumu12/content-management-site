@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static  'css/navbar.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <title>Readit</title>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="hero-container">
+      <div class="text">
+        <p class="heading">Feed Your <span>Curiosity.</span></p>
+        <p class="body-text">
+          Explore a World of Ideas,Insights,and Imagination. <br />Dive into the
+          World of
+          <span>READit</span>
+        </p>
+        <a href="{% url 'signup' %}">
+          <button class="hero-btn">Get <span>Started</span></button></a
+        >
+      </div>
+
+      <div class="book-container">
+        <img class="book-image" src="static/images/book.png" alt="book" />
+      </div>
+    </div>
+
+    <div class="flex-container">
+      <div class="main-container">
+        {% for post in posts %}
+
+        <div class="sub-container">
+          <div>
+            {% if post.author.profile_id %}
+            <a
+              class="profile-link"
+              href="{% url 'profile' post.author.profile_id %}"
+            >
+              <header class="article-header">
+                <img
+                  class="profile-picture"
+                  src="{{ post.author.picture.url }}"
+                  alt=""
+                />
+
+                <div>
+                  <p class="user">{{post.author.name}}</p>
+                </div>
+              </header>
+            </a>
+
+            {% else %}
+            <p>Authors profile is not available</p>
+
+            {% endif %}
+
+            <a class="article-block" href="{% url 'detail' post.slug %}">
+              <p class="title">{{post.title}}</p>
+              <p class="article">{{post.body|safe|truncatechars:200}}</p>
+              <p class="date">
+                {{post.created}}.<button class="article-btn">
+                  {{post.tag}}
+                </button>
+              </p>
+            </a>
+          </div>
+
+          <div class="sub-container-2">
+            <a class="art-pho" href="{% url 'detail' post.slug %}">
+              <img class="article-photo" src="{{post.image.url}}" alt="" />
+            </a>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+      <br />
+      <div class="category">
+        <p class="cat-heading">Find what interests you</p>
+        <div class="sub-container-3">
+          {% for category in Categories %}<button class="category-btn">
+            {{category.name}}
+          </button>
+          {% endfor %}
+          <br />
+        </div>
+      </div>
+      <div class="pagination">
+        <span class="step-links">
+          {% if posts.has_previous %}
+          <a
+            style="
+              text-decoration: none;
+              font-family: Inter;
+              color: #16044f;
+              font-size: 18px;
+              font-weight: 500;
+            "
+            href="?page=1"
+          >
+            first page</a
+          >
+          <a
+            style="
+              text-decoration: none;
+              margin-left: 15px;
+              font-family: Inter;
+              color: #16044f;
+              font-size: 18px;
+              font-weight: 500;
+            "
+            href="?page={{ posts.previous_page_number }}"
+            >previous page</a
+          >
+          {% endif %}
+
+          <span
+            style="
+              font-family: Inter;
+              color: #fafafa;
+              font-size: 20px;
+              font-weight: 600;
+              background-color: #16044f;
+              height: 25px;
+              width: 25px;
+              margin: 15px;
+            "
+            class="current-page"
+            >{{ posts.number }}</span
+          >
+
+          {% if posts.has_next %}
+          <a style="text-decoration: none; font-family: Inter; color: #16044F; font-size: 18px; font-weight: 500;" class="page-number" href="?page={{ posts.next_page_number }}"
+            >next page</i
+          ></a>
+          <a style="text-decoration: none; margin: 15px;  font-family: Inter; color: #16044F; font-size: 18px; font-weight: 500;" class="page-nav" href="?page={{ posts.paginator.num_pages }}"
+            >last page</a>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

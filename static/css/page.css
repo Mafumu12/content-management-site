@@ -1,0 +1,18 @@
+ .current-page
+ {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 100px;
+    color: black;
+    background-color: red;
+ }
+
+ .page-nav
+ {
+    text-decoration: none;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 100px;
+    color: black;
+    background-color: red;
+ }

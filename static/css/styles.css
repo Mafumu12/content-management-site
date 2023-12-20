@@ -1,0 +1,339 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ body{
+
+    background-color: #FAFAFA;
+ }
+
+
+ /*-----------------------------------*\
+      HERO
+ \*-----------------------------------*/
+ .hero-container
+ {
+   display: flex;
+   background-color: #16044F;
+   align-items: center; 
+   justify-content: space-between;
+   width: 100%;
+   height: auto;
+ }
+
+ .book-container
+ {
+  margin-right: 0.7% ;
+  align-self: flex-start;
+  
+ }
+ .text{
+  width: 50%;
+  margin-left: 8%;
+
+ }
+ 
+ .heading
+ {
+   font-family: Inter;
+   color: #FAFAFA;
+    font-size: 63px;
+   font-weight: 600;
+ }
+ .heading span{
+   color: #7DF2F2;
+
+ }
+ .body-text
+ {
+   font-family: Inter;
+   color: #FAFAFA;
+    font-size: 24px;
+   font-weight: 400;
+   line-height: 1.4;
+ }
+ .body-text span
+{
+   color:#E559C7;
+   font-weight: 700;
+}
+
+.hero-btn
+{
+   text-align: center;
+   background-color:#E559C7;
+   border: 2px solid #E559C7;
+   color: #FAFAFA;
+   font-size: 1rem;
+    
+   width: 120px;
+   height:30px;
+   border-radius: 15px;
+}
+.hero-btn span
+{
+   color: #7DF2F2;
+}
+ 
+.book-image
+{
+   
+width: 700px;
+height: auto;
+
+   
+}
+/*-----------------------------------*\
+      BODY SECTION
+\*-----------------------------------*/
+
+.flex-container
+ {
+   display: grid;
+   grid-template-columns: 72% 0% 5%;
+   padding-left: 8%;
+  padding-right: 8%; 
+  margin-top: 100px;
+  width: 100%;
+   
+ }
+ 
+.sub-container
+{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  width:100%;
+  margin-bottom: 15px;
+   
+   
+  
+}
+
+.article-header
+{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+   
+  
+}
+.profile-link{
+
+text-decoration: none;
+
+}
+.user {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  color:#10437B;
+  margin-left: 15px;
+}
+.profile-picture
+{
+  
+  height: 100px;
+  width: 100px;
+  
+  border-radius: 50%;
+  
+}
+
+.article-block
+{
+  text-decoration: none;  
+  
+}
+
+.title{
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  color: #10437B;
+  text-decoration: none;
+}
+.article
+{
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 300;
+  color: #10437B;
+   
+  line-height: 1.4;
+  
+}
+.date
+{
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 300;
+  color: #10437B;
+
+}
+.article-btn
+{
+  text-align: center;
+  background-color:#E559C7;
+  border: 2px solid #E559C7;
+   color: #FAFAFA;
+   border-radius: 15px;
+   font-weight: 300;
+   font-family: Inter;
+   width: 120px;
+}
+.article-photo
+{
+  width: 200px;
+  height: 220px;
+  margin: 20px;
+  align-self: start; 
+}
+
+.category 
+{
+     
+     
+    width: 100%;
+  
+    
+}
+
+.cat-heading
+{
+  font-family: Inter;
+  color:#16044F;
+   font-size: 26px;
+  font-weight: 700;
+  white-space: nowrap ;
+}
+.sub-container-3
+ {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+   
+   
+ }
+
+ 
+
+
+ .category-btn{
+  text-align: center;
+  background-color:#E559C7;
+  border: 2px solid #E559C7;
+   color: #FAFAFA;
+   border-radius: 20px;
+   font-weight: 300;
+   font-family: Inter;
+   width: 100px;
+   height: 40px;
+   margin:5px 5px 5px 0px;
+ }
+ 
+ 
+.article-head p{
+
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  color: #10437B;
+   
+ 
+
+}
+
+
+@media only screen and (max-width:769px)
+{
+.hero-container
+{
+ width: 100%;
+
+}
+.heading
+{
+  font-size: 38px;
+}
+.body-text
+{
+  font-size: 12px;
+}
+.book-image
+{
+  width: 400px;
+  height: auto;
+}
+.text{
+  width:  100%;
+}
+.hero-btn
+{
+  width: 60px;
+  height: 15px;
+  font-size: 0.5rem;
+}
+
+.flex-container
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  
+}
+.profile-picture
+{
+  
+  height: 50px;
+  width: 50px;
+  
+  border-radius: 50%;
+  
+}
+.sub-container-3
+ {
+    display: grid;
+    grid-template-columns: repeat(3,5%);
+   
+   
+ }
+ .article
+ {
+  font-size: 14px;
+ }
+
+ .article-photo
+ {
+  width: 400px;
+  height: auto;
+  margin-left: 0;
+   
+ }
+ .category
+ {
+  order: -1;
+ }
+  .category-btn
+  {
+    width: 115px;
+  }
+ .sub-container-3
+ {
+    display: grid;
+    grid-template-columns: repeat(3,0.6fr);
+   
+   
+ }
+ .sub-container
+{
+  display: grid;
+  grid-template-columns: 1fr;
+   
+   
+   
+  
+}
+ 
+}
+
+ 

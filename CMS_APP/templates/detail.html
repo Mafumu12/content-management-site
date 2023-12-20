@@ -1,0 +1,97 @@
+{% extends 'base.html'%} {% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  />
+</head>
+
+<body>
+  <div class="Article-Container">
+    <p class="Article-Title">{{posts.title}}</p>
+    <a class="profile-link" href="{% url 'profile' posts.author.profile_id %}">
+      <header class="Article-Header">
+        <img class="Profile-Img" src="{{ posts.author.picture.url }}" alt="" />
+
+        <div>
+          <p class="Article-Owner">{{posts.author.name}}</p>
+          <p class="Article-date">{{posts.created}}</p>
+        </div>
+      </header>
+    </a>
+
+    <p><img class="Article-Img" src="{{posts.image.url}}" alt="" /></p>
+    <p class="Article-Text">{{posts.body|safe}}</p>
+    <br />
+    {% if user.is_authenticated %}
+
+    <div class="edit-like">
+      <div>
+        {% if request.user.profile == posts.author %}
+        <a href="{% url 'update' posts.slug %}">
+          <button class="edit" type="submit">Edit</button>
+        </a>
+        {%endif%}
+      </div>
+
+      <div>
+        <form action="{% url 'like' posts.post_id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="post_id" value="{{ posts.id }}" />
+          <button class="like-button" type="submit">
+            <i class="fa-regular fa-thumbs-up"></i>
+          </button>
+        </form>
+      </div>
+      <h6>likes:{{posts.total_likes}}</h6>
+    </div>
+
+    {%endif%} {% if not posts.comments.all %}
+    <p>No comments yet</p>
+    {% else %} {% for comment in posts.comments.all %}
+    <p>{{comment.name }}</p>
+    >
+    <p>{{comment.date_added}}</p>
+    <br />
+    {{ comment.body }} {% endfor %} {% endif %}
+  </div>
+
+  <br />
+
+  <h1 class="h">Recent post</h1>
+  <div class="Recent-Container">
+    {% for post in recent_posts %}
+
+    <div>
+      <a class="profile-link" href="{% url 'profile' post.author.profile_id %}">
+        <header class="article-header">
+          <img
+            class="profile-picture"
+            src="{{ post.author.picture.url }}"
+            alt=""
+          />
+
+          <div>
+            <p class="user">{{post.author.name}}</p>
+          </div>
+        </header>
+      </a>
+      <a style="text-decoration: none" href="{% url 'detail' post.slug %}">
+        <p class="title">{{post.title}}</p>
+
+        <p class="article">{{post.body|truncatechars:200}}</p>
+      </a>
+    </div>
+    <div>
+      <a style="text-decoration: none" href="{% url 'detail' post.slug %}">
+        <img class="article-photo" src="{{post.image.url}}" alt="" />
+      </a>
+    </div>
+
+    {% endfor %}
+  </div>
+</body>
+
+{% endblock %}

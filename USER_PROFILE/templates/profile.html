@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%include 'navbar.html'%}
+    <div class="contain">
+      <div class="bio-container">
+        <img class="pro-pic" src="{{profile.picture.url}}" alt="" />
+
+        <p>{{profile.name}}</p>
+
+        <h1>Profession</h1>
+        <p class="profession">{{profile.profession}}</p>
+
+        <h1>About Me</h1>
+        <p class="about">{{profile.about}}</p>
+      </div>
+      <div style="margin-top: 4%">
+        <h1 class="my">Articles</h1>
+        <div class="my-articles">
+          {% for post in profile.post_set.all %}
+          <a
+            style="text-decoration: none"
+            class="article-block"
+            href="{% url 'detail' post.slug %}"
+          >
+            <div class="m-p">
+              <p class="a-t">{{post.title}}</p>
+              <p class="a-b">{{post.body|truncatechars:100}}</p>
+            </div>
+          </a>
+          <a
+            style="text-decoration: none"
+            class="article-block"
+            href="{% url 'detail' post.slug %}"
+          >
+            <div>
+              <img class="a-p" src="{{post.image.url}}" alt="" />
+            </div>
+          </a>
+
+          {% endfor %}
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

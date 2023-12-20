@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/account.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    {%include 'navbar.html'%}
+    <div class="contain">
+      <div class="bio-container">
+        <img class="pro-pic" src="{{account.picture.url}}" alt="" />
+
+        <h1>Profession</h1>
+        <p class="profession">{{account.profession}}</p>
+
+        <h1>About Me</h1>
+        <p class="about">{{account.about}}</p>
+
+        <a
+          style="text-decoration: none"
+          href="{% url 'update_profile' account.profile_id %}"
+        >
+          <button class="bio-btn">Edit Profile</button>
+        </a>
+
+        <a href="{% url 'delete_profile' account.profile_id %}">
+          <button class="bio-btn">Delete Profile</button>
+        </a>
+      </div>
+      <div style="margin-top: 4%">
+        <h1 class="my">My Articles</h1>
+        <div class="my-articles">
+          {% for post in account.post_set.all %}
+
+          <div class="m-p">
+            <p class="a-t">{{post.title}}</p>
+            <p class="a-b">{{post.body|truncatechars:100}}</p>
+            <a
+              style="text-decoration: none"
+              href="{%  url 'update' post.slug %}"
+            >
+              <button class="e-a">Edit Article</button>
+            </a>
+            <a
+              style="text-decoration: none"
+              href="{%  url 'delete' post.slug %}"
+            >
+              <button class="e-a">Delete Article</button>
+            </a>
+          </div>
+          <div>
+            <img class="a-p" src="{{post.image.url}}" alt="" />
+          </div>
+
+          {% endfor %}
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

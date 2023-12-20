@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static  'css/navbar.css' %}" />
+  </head>
+
+  <body>
+    {% if user.is_authenticated %}
+
+    <header>
+      <div class="nav-container">
+        <a style="text-decoration: none" href="{% url 'home' %}">
+          <p class="logo">READ<span>it</span></p>
+        </a>
+
+        <nav>
+          <ul class="nav-items">
+            <li class="search">
+              <div>
+                <form class="search-form" action="">
+                  <input
+                    class="search"
+                    name="q"
+                    type="search"
+                    placeholder=" find a topic.."
+                  />
+                  <button class="search-btn">Search</button>
+                </form>
+              </div>
+            </li>
+            <li>
+              <a class="nav-link" href="{% url 'post' %}">Write Article</a>
+            </li>
+
+            <li class="dropdown">
+              <a href=" " class="dropdown-button dropdown-list"> {{user}}</a>
+              <div class="drop-content">
+                <a href="{% url 'profile' user.profile.profile_id %}"
+                  >Profile</a
+                >
+                <a href="{% url 'account' %}">Account Settings</a>
+                <a href="{% url 'logout' %}">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {% else %}
+    <header>
+      <div class="nav-container">
+        <a style="text-decoration: none" href="{% url 'home' %}"
+          ><p class="logo">READ<span>it</span></p></a
+        >
+
+        <nav>
+          <ul class="nav-items-1">
+            <li>
+              <a class="nav-link" href="{% url 'login' %}">Sign In</a>
+            </li>
+
+            <div class="nav-button">
+              <a href="{% url 'signup' %}">
+                <button>Get <span>Started</span></button></a
+              >
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,168 @@
+:root{
+    --firsthead-color:#7DF2F2;
+    --main-color:#FAFAFA;
+    --secondhead-color:#E638C2;
+    --placeholder-color:#6989AB;
+   
+    
+}
+
+.form-container
+{
+    margin-top: 5%;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.form-head{
+    text-align: center;
+    font-family: inter;
+    font-size: 42px;
+    color: #12004A;
+}
+.form-container input[type ="text"]
+
+{
+    margin-top: 5%;
+    width: 100%;
+    height: 50px;
+    background-color: var(--main-color);
+    border: none;
+}
+
+.custom-textarea
+{
+    margin-top: 5%;
+    width: 100%;
+    height: 50%;
+    background-color: var(--main-color);
+    border: none;
+}
+
+
+.custom-textarea::placeholder
+{
+     font-family: Inter;
+     color: var(--placeholder-color);
+     font-weight: 300;
+     font-size: 16px;
+}
+.form-container input[type="text"]::placeholder
+{
+     font-family: Inter;
+     color: var(--placeholder-color);
+     font-weight: 300;
+     font-size: 16px;
+}
+.custom-file
+{
+    margin-top: 5%;
+    width: 50%;
+    background-color: var(--main-color);
+    border: none; 
+}
+.category-f
+{
+    margin-top: 5%;
+    width: 50%;
+    background-color: var(--main-color);
+    border: none; 
+}
+
+
+.form-head span{
+     
+    color: var(--secondhead-color);
+}
+
+.c
+{
+    margin-top: 5%;
+    font-family: Inter;
+     color: var(--placeholder-color);
+     font-weight: 300;
+     font-size: 16px;
+}
+
+.click
+{
+    margin-top: 5%;
+    text-align: center;
+}
+.publish{
+ 
+    background-color: #12004A;
+    font-size: 15px;
+    font-family: Inter;
+    font-weight: 500;
+    color: var(--main-color);
+    border-radius: 15px;
+    border: 1px solid var(--main-color);
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 10px;  
+ 
+}
+.cancel
+{
+    text-decoration: none;
+    text-align: center;
+    background-color: #12004A;
+    font-size: 15px;
+    font-family: Inter;
+    font-weight: 500;
+    color: var(--main-color);
+    border-radius: 15px;
+    border: 1px solid var(--main-color);
+    width: 100px;
+    height: 28px;
+    display: inline-block;
+     
+     
+     
+}
+.pub
+{
+    margin-top: 5%;
+    ;
+    background-color: #120148;
+    font-size: 15px;
+    font-family: Inter;
+    font-weight: 500;
+    color: var(--main-color);
+    border-radius: 15px;
+    border: 1px solid var(--main-color);
+    width: 100px;
+    height: 30px; 
+}
+
+
+
+@media only screen and (max-width:700px)
+{
+    .form-head{
+        
+        font-size: 25px;
+        text-align: start;
+         
+    }
+    .click{
+        text-align: start;
+    }
+
+    .form-container
+    {
+        margin-top: 20%;
+    }
+    .publish
+    {
+        width: 100px;
+        height: 22px;
+    }
+    .cancel
+    {
+        width: 100px;
+        height: 22px;
+    }
+}

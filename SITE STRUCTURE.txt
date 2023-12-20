@@ -1,0 +1,63 @@
+1. Landing Page
+    . navbar
+      -far left 
+          -logo
+       -far right
+          -Home Link
+          -login button
+           -signup buton
+2.SignUp Page
+    .signUp form
+(After a successful signup, the user must be redirected to the login page)
+
+
+3. Login Page
+    .Login Form
+(After login you should be redirected to your profile)
+
+
+-------------------------------------------------------------------
+----------------------------------------------------------------------
+
+
+4. Profile Page
+    1. Picture
+    2. About Me
+    3. Edit Profile Button
+    4. My Articles
+       -edit  and  delete 
+
+   Navbar
+     -far left Logo
+     -far right -> Home,Create Article,
+
+
+5. Update profile Page
+   (After updating profile redirect to the profile page with the successful update)
+
+    update profile form (Profile Model)
+      - Name
+      - Username
+      - Email
+      - Picture
+      - Profession
+      - Bio
+      - location
+      - Update Profile Button
+
+6. Create An Article page(Model)
+    - Title
+    - Image
+    - Body( Rich text editor)
+    -Tag(linked to the category model) 
+
+     Create button
+ 
+7. Home Page
+   - Top Articles
+   - Categories
+   - 3 most recent posts
+8. Detail Page
+    - recent posts  
+    - Add Comments
+         
